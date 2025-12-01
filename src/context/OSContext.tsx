@@ -1,5 +1,4 @@
 import { createContext, useContext, useReducer } from "react";
-import { Terminal, Globe, File, type LucideIcon } from "lucide-react";
 
 // --- 1. Define Types ---
 export interface AppData {
@@ -35,7 +34,7 @@ const initialApps: AppData[] = [
   {
     id: "safari",
     title: "Safari",
-    icon: "safari.png",
+    icon: "safari.webp",
     isOpen: true,
     isMinimized: false,
     isMaximized: false,
@@ -47,7 +46,7 @@ const initialApps: AppData[] = [
   {
     id: "terminal",
     title: "Terminal",
-    icon: "terminal.png",
+    icon: "terminal.webp",
     isOpen: false,
     isMinimized: false,
     isMaximized: false,
@@ -59,7 +58,7 @@ const initialApps: AppData[] = [
   {
     id: "files",
     title: "Files",
-    icon: "finder.png",
+    icon: "finder.webp",
     isOpen: false,
     isMinimized: false,
     isMaximized: false,
@@ -67,6 +66,42 @@ const initialApps: AppData[] = [
     y: 250,
     z: 1,
     content: "File Explorer",
+  },
+  {
+    id: "mail",
+    title: "Mail",
+    icon: "mail.webp",
+    isOpen: false,
+    isMinimized: false,
+    isMaximized: false,
+    x: 400,
+    y: 350,
+    z: 1,
+    content: "Contact me",
+  },
+  {
+    id: "notes",
+    title: "Notes",
+    icon: "notes.webp",
+    isOpen: false,
+    isMinimized: false,
+    isMaximized: false,
+    x: 500,
+    y: 450,
+    z: 1,
+    content: "Notes",
+  },
+  {
+    id: "settings",
+    title: "Settings",
+    icon: "settings.webp",
+    isOpen: false,
+    isMinimized: false,
+    isMaximized: false,
+    x: 600,
+    y: 550,
+    z: 1,
+    content: "System Settings",
   },
 ];
 

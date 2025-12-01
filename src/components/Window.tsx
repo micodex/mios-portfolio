@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useOS, AppData } from "@/context/OSContext";
+import { useState, useRef, useEffect } from "react";
+import { useOS, type AppData } from "@/context/OSContext";
 import { X, Minus, Maximize2 } from "lucide-react";
 
 interface WindowProps {
@@ -13,10 +13,11 @@ const Window = ({ app }: WindowProps) => {
   const [isDragging, setIsDragging] = useState(false);
   const dragOffset = useRef({ x: 0, y: 0 });
 
+  // start dragging
   const handleMouseDown = (e: React.MouseEvent) => {
+    // Prevent dragging if maximized
     if (app.isMaximized) return;
     dispatch({ type: "FOCUS", id: app.id }); // Tell OS we are focused
-    // Prevent dragging if maximized
     setIsDragging(true);
     // Calculate where we clicked relative to the window's top-left corner
     dragOffset.current = {
@@ -56,7 +57,7 @@ const Window = ({ app }: WindowProps) => {
     left: app.isMaximized ? 0 : app.x,
     top: app.isMaximized ? 32 : app.y, // 32px to account for Navbar
     width: app.isMaximized ? "100%" : "32rem",
-    height: app.isMaximized ? "calc(100% - 32px)" : "20rem",
+    height: app.isMaximized ? "calc(100% - 32px)" : "25rem",
     zIndex: app.z,
     transform: app.isMinimized ? "translate(0, 500px) scale(0)" : "none",
     opacity: app.isMinimized ? 0 : 1,

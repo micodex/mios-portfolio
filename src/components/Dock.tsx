@@ -152,7 +152,6 @@ function DockIcon({ children, className = "" }: DockIconProps) {
 }
 
 import { useOS } from "@/context/OSContext";
-import type { LucideIcon } from "lucide-react";
 
 export default function Dock({
   className = "",
@@ -206,14 +205,18 @@ export default function Dock({
             baseItemSize={baseItemSize}
           >
             <DockIcon>
-              <img src={`/src/assets/images/${item.icon}`} alt="" />
+              <img
+                loading="lazy"
+                src={`/src/assets/images/${item.icon}`}
+                alt={`${item.title} icon`}
+              />
             </DockIcon>
 
             <DockLabel>{item.title}</DockLabel>
             {/* dot indicator */}
             <div
               className={`
-                absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-white rounded-full transition-all
+                absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-black rounded-full transition-all
                 ${item.isOpen ? "opacity-80" : "opacity-0"}
               `}
             />
