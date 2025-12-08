@@ -23,7 +23,7 @@ const TerminalApp = () => {
 
   return (
     <div
-      className="h-full text-green-300 font-mono text-sm p-4 flex flex-col bg-slate-950/80 backdrop-blur-xl"
+      className="h-full text-green-400 font-mono text-sm p-4 flex flex-col bg-slate-950/80 backdrop-blur-xl"
       onClick={() => document.getElementById("term-input")?.focus()}
     >
       <div className="flex-1 overflow-auto">
@@ -33,7 +33,7 @@ const TerminalApp = () => {
           </div>
         ))}
         <div className="flex">
-          <span className="mr-2 text-green-200">➜ ~</span>
+          <span className="mr-2 text-green-300">➜ ~</span>
           <input
             id="term-input"
             className="bg-transparent outline-none flex-1 text-gray-100"

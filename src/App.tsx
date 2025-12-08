@@ -10,7 +10,7 @@ function Desktop() {
   const { state } = useOS();
 
   return (
-    <div className="h-screen w-screen font-georama">
+    <div className="font-georama">
       {/* navigation */}
       <Navbar />
 

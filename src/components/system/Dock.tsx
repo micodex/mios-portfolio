@@ -209,6 +209,7 @@ export default function Dock({
                 loading="lazy"
                 src={`/src/assets/images/${item.icon}`}
                 alt={`${item.title} icon`}
+                draggable={false}
               />
             </DockIcon>
 

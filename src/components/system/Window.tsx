@@ -1,8 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useOS, type AppData } from "@/context/OSContext";
-import { X, Minus, Maximize2 } from "lucide-react";
-
 import { getAppComponent } from "@/apps.config";
+import { X, Minus, Maximize2 } from "lucide-react";
 
 interface WindowProps {
   app: AppData;
@@ -57,7 +56,7 @@ const Window = ({ app }: WindowProps) => {
 
   const style: React.CSSProperties = {
     left: app.isMaximized ? 0 : app.x,
-    top: app.isMaximized ? "2.5rem" : app.y, // 40px ( h-10 or 2.5rem) height of the Navbar
+    top: app.isMaximized ? "40px" : app.y, // 40px ( h-10 or 2.5rem) height of the Navbar
     width: app.isMaximized ? "100%" : app.width, // use 'auto' for dynamic width
     height: app.isMaximized ? "calc(100% - 32px)" : app.height,
     zIndex: app.z,
@@ -74,9 +73,8 @@ const Window = ({ app }: WindowProps) => {
       onMouseDown={() => dispatch({ type: "FOCUS", id: app.id })}
     >
       {/* Header */}
-      {/* bg-linear-to-br from-gray-100/80 to-gray-100/50  border-b border-gray-300/50*/}
       <div
-        className="h-10 flex items-center justify-between px-4 bg-white/80 backdrop-blur-2xl select-none cursor-grab active:cursor-grabbing"
+        className="h-10 flex items-center justify-between px-4 bg-white/70 backdrop-blur-2xl select-none cursor-grab active:cursor-grabbing"
         onMouseDown={handleMouseDown}
         onDoubleClick={() => dispatch({ type: "MAXIMIZE", id: app.id })}
       >

@@ -1,22 +1,38 @@
 import { SOCIAL_LINKS } from "@/data/mail";
-import { Bold, ChevronDown, Italic, Paperclip, Underline } from "lucide-react";
 import { customScrollbar } from "@/lib/scrollbar";
+import { Bold, ChevronDown, Italic, Paperclip, Underline } from "lucide-react";
+
 const MailApp = () => {
   return (
     <div className="flex h-full bg-white/70 backdrop-blur-2xl">
       {/* sidebar */}
-      <aside className="w-49 pt-3">
-        <h3 className=" px-5 mb-1 text-[10px] font-bold text-gray-400 uppercase tracking-wide">
+      <aside className="w-49 pt-3 select-none">
+        <h3 className="px-5 mb-1 text-[10px] font-bold text-gray-400 uppercase tracking-wide">
           social
         </h3>
-
+        {/* /social lists */}
         <div className="space-y-0.5 px-2">
           {SOCIAL_LINKS.map(({ label, icon: Icon, url }) => (
             <div key={label}>
-              <button className="w-full flex items-center gap-2.5 px-3 py-1.5 rounded-md text-sm transition-colors duration-150 text-gray-600 hover:bg-black/5 active:bg-black/10">
-                <Icon size={16} className="text-blue-500" />
+              <a
+                href={url}
+                target={label === "Email" ? "" : "_blank"}
+                rel="noopener noreferrer"
+                className={`w-full flex items-center gap-2.5 px-3 py-1.5 rounded-md text-sm transition-colors duration-150 
+                ${
+                  label === "Email"
+                    ? "text-white bg-sky-500"
+                    : "text-gray-600 hover:bg-black/5 active:bg-black/10"
+                }`}
+              >
+                <Icon
+                  size={16}
+                  className={`${
+                    label === "Email" ? "text-white" : "text-blue-500"
+                  }`}
+                />
                 <span className="">{label}</span>
-              </button>
+              </a>
             </div>
           ))}
         </div>
