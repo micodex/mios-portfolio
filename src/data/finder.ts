@@ -7,9 +7,20 @@ import {
   User,
   Cloud,
   Tag,
+  type LucideIcon,
 } from "lucide-react";
 
-export const SIDEBAR_ITEMS = [
+export interface SideBarItems {
+  category: string;
+  items: {
+    id: string;
+    label: string;
+    icon: LucideIcon;
+    color: string;
+  }[];
+}
+
+export const SIDEBAR_ITEMS: SideBarItems[] = [
   {
     category: "Favorites",
     items: [
@@ -51,77 +62,109 @@ export const SIDEBAR_ITEMS = [
   },
 ];
 
-export const PROJECTS = [
+export interface Project {
+  id: number;
+  title: string;
+  desc: string;
+  tags: string[];
+  image: string;
+  github: string;
+  demo: string;
+}
+
+export const PROJECTS: Project[] = [
   {
     id: 1,
-    title: "Nebula AI",
-    desc: "A spatial LLM wrapper built with React & Python.",
-    tags: ["React", "Python", "AI"],
-    color: "bg-gradient-to-br from-purple-500 to-indigo-600",
+    title: "Micodx Portfolio",
+    desc: "A modern portfolio website built with Next.js 15 and React 19, The UI is styled with Tailwind CSS 4 and enhanced with AOS and Framer Motion animations for smooth transitions.",
+    tags: ["Next.js", "TypeScript", "Motion"],
+    image: "src/assets/images/project-1.jpg",
+    github: "https://github.com/micodex/micodex-portfolio",
+    demo: "https://micodex-portfolio.vercel.app/",
   },
   {
     id: 2,
-    title: "CryptoDash",
-    desc: "Real-time DeFi analytics dashboard using Web3.",
-    tags: ["Next.js", "Solidity", "Tailwind"],
-    color: "bg-gradient-to-br from-blue-400 to-cyan-500",
+    title: "MiOS Portfolio",
+    desc: "The operating system you are currently looking at.",
+    tags: ["TypeScript", "Vite", "React"],
+    image: "",
+    github: "",
+    demo: "",
   },
   {
     id: 3,
-    title: "Vim-Motion",
-    desc: "A gamified way to learn Vim keybindings.",
-    tags: ["Rust", "WASM", "GameDev"],
-    color: "bg-gradient-to-br from-emerald-400 to-green-600",
+    title: "Mx Expense Tracker",
+    desc: "A lightweight single-page app for tracking and managing income and expense transactions with a Persian (RTL) interface. Built using React, TypeScript, Vite, and Tailwind CSS.",
+    tags: ["React", "TypeScript", "Tailwind"],
+    image: "src/assets/images/project-2.jpg",
+    github: "https://github.com/micodex/mx-expense-tracker",
+    demo: "https://micodex.github.io/mx-expense-tracker/",
   },
   {
     id: 4,
-    title: "Hyper-OS",
-    desc: "The operating system you are currently looking at.",
-    tags: ["TypeScript", "Vite", "Zustand"],
-    color: "bg-gradient-to-br from-orange-400 to-red-500",
+    title: "Ave Color",
+    desc: "A lightweight JavaScript + TypeScript utility to extract the average (dominant) color from any image — perfect for generating matching backgrounds, borders, or shadows automatically in your apps.",
+    tags: ["NPM", "TypeScript", "Utility"],
+    image: "src/assets/images/project-3.jpg",
+    github: "https://github.com/micodex/npm-avecolor",
+    demo: "https://www.npmjs.com/package/avecolor",
   },
   {
     id: 5,
     title: "EcoTracker",
     desc: "IoT dashboard for monitoring smart city energy.",
     tags: ["Vue", "D3.js", "IoT"],
-    color: "bg-gradient-to-br from-teal-400 to-blue-500",
+    image: "",
+    github: "",
+    demo: "",
   },
+
   {
     id: 6,
     title: "PixelArt",
     desc: "Browser-based sprite editor for game devs.",
     tags: ["Canvas API", "React"],
-    color: "bg-gradient-to-br from-pink-400 to-rose-500",
+    image: "",
+    github: "",
+    demo: "",
   },
 ];
+
+export interface Skills {
+  category: string;
+  skills: {
+    label: string;
+    icon: string;
+    level: string;
+  }[];
+}
 
 export const MY_SKILLS = [
   {
     category: "frontend",
     skills: [
-      { label: "JavaScript.js", icon: "javascript.png", level: "72%" },
-      { label: "TypeScript.ts", icon: "typescript.png", level: "72%" },
-      { label: "React.js", icon: "react.png", level: "72%" },
-      { label: "CSS", icon: "css.png", level: "72%" },
-      { label: "Tailwind.css", icon: "less.png", level: "72%" },
+      { label: "JavaScript.js", icon: "javascript.png", level: "80%" },
+      { label: "TypeScript.ts", icon: "typescript.png", level: "70%" },
+      { label: "React.js", icon: "react.png", level: "60%" },
+      { label: "CSS", icon: "css.png", level: "85%" },
+      { label: "Tailwind.css", icon: "less.png", level: "90%" },
     ],
   },
   {
     category: "backend",
     skills: [
-      { label: "Node.js", icon: "sh.png", level: "72%" },
-      { label: "Express.js", icon: "JSON.png", level: "72%" },
-      { label: "Next.js", icon: "javascript.png", level: "72%" },
+      { label: "Node.js", icon: "sh.png", level: "30%" },
+      { label: "Express.js", icon: "JSON.png", level: "40%" },
+      { label: "Next.js", icon: "javascript.png", level: "55%" },
     ],
   },
   {
     category: "tools",
     skills: [
-      { label: "Git", icon: "text.png", level: "72%" },
-      { label: "Github", icon: "text.png", level: "72%" },
-      { label: "Docker", icon: "plain.png", level: "30%" },
-      { label: "CI/CD", icon: "sh.png", level: "72%" },
+      { label: "Git", icon: "text.png", level: "50%" },
+      { label: "Github", icon: "text.png", level: "60%" },
+      { label: "Docker", icon: "plain.png", level: "10%" },
+      { label: "CI/CD", icon: "sh.png", level: "10%" },
     ],
   },
 ];

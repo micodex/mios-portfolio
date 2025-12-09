@@ -5,14 +5,14 @@ import {
   LayoutGrid,
   List,
   Search,
-  Tag,
   User,
 } from "lucide-react";
-// bg-[#007AFF]/80
-import { PROJECTS, SIDEBAR_ITEMS } from "@/data/finder";
+
 import { useState } from "react";
-import ProjectCard from "./ProjectCard";
+import { PROJECTS, SIDEBAR_ITEMS } from "@/data/finder";
+
 import { customScrollbar } from "@/lib/scrollbar";
+import ProjectCard from "./ProjectCard";
 import SkillsView from "./SkillsView";
 
 const FinderApp = () => {
@@ -30,6 +30,7 @@ const FinderApp = () => {
             </h3>
             {items.map(({ label, id, icon: Icon, color }) => (
               <button
+                key={id}
                 id="item"
                 onClick={() => setActiveTab(id)}
                 className={`
@@ -103,7 +104,7 @@ const FinderApp = () => {
         {/*  tab content */}
         <div
           onClick={(e) => e.stopPropagation()}
-          className={`${customScrollbar} grow p-4 overflow-y-auto`}
+          className={`${customScrollbar} flex-1 p-4 overflow-y-auto`}
         >
           {/* render tabs */}
           {activeTab === "projects" && (
@@ -112,7 +113,7 @@ const FinderApp = () => {
                 <h2 className="text-gray-500 text-xs font-bold mb-4 px-1">
                   2025 Projects
                 </h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div className="grid grid-cols-4 gap-4">
                   {PROJECTS.map((p) => (
                     <ProjectCard key={p.id} project={p} />
                   ))}
@@ -124,8 +125,7 @@ const FinderApp = () => {
                 </h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 opacity-70">
                   {PROJECTS.slice(0, 2).map((p) => (
-                    // <ProjectCard key={p.id + 99} project={p} />
-                    <span>project card</span>
+                    <ProjectCard key={p.id} project={p} />
                   ))}
                 </div>
               </div>
