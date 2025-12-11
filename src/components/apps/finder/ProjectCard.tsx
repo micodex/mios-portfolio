@@ -16,6 +16,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
             src={project.image}
             alt={`${project.title} thumbnail`}
             draggable={false}
+            loading="lazy"
             className="block shadow-md w-80 self-center"
           />
         </a>
@@ -26,6 +27,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
             src="src/assets/images/folder.png"
             alt="thumbnail"
             draggable={false}
+            loading="lazy"
             className="block w-40 self-center"
           />
         </div>

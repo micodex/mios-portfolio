@@ -1,19 +1,10 @@
-import {
-  ArrowUpRight,
-  ChevronRight,
-  Download,
-  LayoutGrid,
-  List,
-  Search,
-  User,
-} from "lucide-react";
-
 import { useState } from "react";
-import { PROJECTS, SIDEBAR_ITEMS } from "@/data/finder";
+import { SIDEBAR_ITEMS } from "@/data/finder";
 
 import { customScrollbar } from "@/lib/scrollbar";
-import ProjectCard from "./ProjectCard";
-import SkillsView from "./SkillsView";
+import { AboutTab, ProjectsTab, ResumeTab, SkillsTab } from "./Tabs";
+
+import { ChevronRight, LayoutGrid, List, Search } from "lucide-react";
 
 const FinderApp = () => {
   const [activeTab, setActiveTab] = useState("projects");
@@ -34,7 +25,7 @@ const FinderApp = () => {
                 id="item"
                 onClick={() => setActiveTab(id)}
                 className={`
-                    w-full px-3 py-1.5 flex items-center gap-2.5 text-sm transition-colors rounded-lg
+                    w-full px-3 py-1.5 flex items-center gap-2.5 text-sm transition-colors rounded-lg cursor-pointer
                     ${
                       activeTab === id
                         ? "text-white bg-sky-500"
@@ -107,75 +98,13 @@ const FinderApp = () => {
           className={`${customScrollbar} flex-1 p-4 overflow-y-auto`}
         >
           {/* render tabs */}
-          {activeTab === "projects" && (
-            <div className="space-y-6">
-              <div>
-                <h2 className="text-gray-500 text-xs font-bold mb-4 px-1">
-                  2025 Projects
-                </h2>
-                <div className="grid grid-cols-4 gap-4">
-                  {PROJECTS.map((p) => (
-                    <ProjectCard key={p.id} project={p} />
-                  ))}
-                </div>
-              </div>
-              <div>
-                <h2 className="text-gray-500 text-xs font-bold mb-4 px-1">
-                  Mini Projects
-                </h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 opacity-70">
-                  {PROJECTS.slice(0, 2).map((p) => (
-                    <ProjectCard key={p.id} project={p} />
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
+          {activeTab === "projects" && <ProjectsTab />}
 
-          {activeTab === "skills" && <SkillsView />}
+          {activeTab === "skills" && <SkillsTab />}
 
-          {activeTab === "about" && (
-            <div className="flex flex-col items-center justify-center h-full text-center p-8 text-gray-500 space-y-4">
-              <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-                <User size={48} className="text-gray-300" />
-              </div>
-              <h2 className="text-2xl font-bold text-gray-800">
-                Milad Gharibi
-              </h2>
-              <p className="max-w-md">
-                I am a creative developer building interfaces that feel alive.
-                Welcome to my digital garden.
-              </p>
-              <button className="flex items-center gap-2 text-blue-500 hover:underline cursor-pointer mt-4">
-                Read full bio <ArrowUpRight size={14} />
-              </button>
-            </div>
-          )}
+          {activeTab === "about" && <AboutTab />}
 
-          {activeTab === "resume" && (
-            <div className="flex flex-col gap-2">
-              {[
-                "Resume_2025.pdf",
-                "Cover_Letter.docx",
-                "Portfolio_Assets.zip",
-                "Assets.zip",
-              ].map((file, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-3 p-3 hover:bg-blue-50 rounded-lg cursor-pointer group even:bg-gray-100"
-                >
-                  <Download
-                    size={20}
-                    className="text-gray-400 group-hover:text-blue-500"
-                  />
-                  <span className="text-sm font-medium text-gray-700">
-                    {file}
-                  </span>
-                  <span className="text-xs text-gray-400 ml-auto">2.4 MB</span>
-                </div>
-              ))}
-            </div>
-          )}
+          {activeTab === "resume" && <ResumeTab />}
         </div>
       </div>
     </div>
