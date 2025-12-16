@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
-
-    "jsx": "react-jsx",   
+    "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
+    
+    "noEmit": true, // vite already transpiles TS to JS using esbuild
+    "skipLibCheck": true // Skip lib type checking for framer type errors!
   },
-  "include": ["src"],
+  "include": ["src"]
 }
