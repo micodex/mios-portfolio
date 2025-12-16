@@ -1,73 +1,108 @@
-# React + TypeScript + Vite
+## پورتفولیو macOS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+یک پورتفولیو تعاملی و مینیمال که ظاهر و تجربه کاربری دسکتاپ macOS رو شبیه‌سازی می‌کنه.  
+این پروژه با **React + TypeScript + Vite** و **Tailwind CSS v4** پیاده‌سازی شده و شامل چندین اپلیکیشن داخلی مانند Finder، Safari، Notes، Mail، Terminal و Settings است.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![project screenshot](public/projects/project-4.jpg)
+دمو آنلاین 👈 [mios](https://)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### ✨ ویژگی‌های اصلی
 
-## Expanding the ESLint configuration
+- **شبیه‌سازی دسکتاپ macOS Tahoe**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+  - نوار بالا (`Navbar`) با نمایش نام اپلیکیشن فعال و ساعت زنده
+  - داک متحرک (`Dock`) با افکت بزرگ‌نمایی آیکون‌ها (Magnification)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **سیستم پنجره‌ها و مدیریت وضعیت سیستم‌عامل**
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+  - کشیدن و رها کردن پنجره‌ها (Drag & Drop) با استفاده از کانتکست `OSContext`
+  - قابلیت **باز کردن، بستن، مینیمایز و ماکسیمایز** هر اپلیکیشن
+  - مدیریت اولویت نمایش (z-index) برای پنجره‌های فعال
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **اپلیکیشن‌های داخلی پورتفولیو**
+
+  - **Finder**: نمایش پروژه‌ها/فایل‌ها به صورت کارت با تصاویر و جزئیات
+  - **Safari**: هنوز پیاده سازی نشده
+  - **Notes**: نگهداری نوت‌ها، توضیحات یا اطلاعات کوتاه درباره شما
+  - **Mail**: شبیه‌ساز لیست ایمیل‌ها / پیام‌ها برای نمایش اطلاعات تماس
+  - **Terminal**: یک ترمینال ساده برای نمایش مهارت‌ها، کامندها یا متن‌های نمایشی
+  - **Settings**: تنظیمات ظاهری (مثل والپیپر، تم روشن/تاریک در صورت پیاده‌سازی)
+
+- **انیمیشن‌ها و تجربه کاربری مدرن**
+
+  - استفاده از کتابخانه `motion` برای انیمیشن‌های نرم در داک و کامپوننت‌ها
+  - ترنزیشن‌های نرم برای باز/بسته شدن و جابه‌جایی پنجره‌ها
+  - طراحی مینیمال و واکنش‌گرا با Tailwind CSS
+
+- **ساختار کد تمیز و قابل توسعه**
+  - استفاده از `apps.config.tsx` برای تعریف اپلیکیشن‌ها به‌صورت داینامیک
+  - کانتکست جداگانه برای مدیریت وضعیت شبیه سیستم‌عامل (`OSContext`, `useOS`)
+  - جداسازی کامپوننت‌های سیستم (`Navbar`, `Dock`, `Window`, `ControlCenter`) و اپ‌ها
+
+---
+
+### 🚀 اجرای پروژه
+
+- **پیش‌نیازها**
+
+  - Node.js نسخه ۱۸ به بالا
+  - npm یا yarn یا pnpm
+
+- **نصب وابستگی‌ها**
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **اجرای محیط توسعه**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+سپس آدرس نمایش داده شده در ترمینال (معمولاً `http://localhost:5173`) را در مرورگر باز کنید.
+
+- **ساخت نسخه نهایی (Production Build)**
+
+```bash
+npm run build
+```
+
+برای پیش‌نمایش خروجی نهایی:
+
+```bash
+npm run preview
+```
+
+---
+
+### 🧩 ساختار پوشه‌ها (خلاصه)
+
+- **`src/App.tsx`**: روت اصلی دسکتاپ که `Navbar`، `Dock` و همه پنجره‌ها را رندر می‌کند.
+- **`src/apps.config.tsx`**: تعریف تنظیمات و لیست اپلیکیشن‌ها (Finder، Safari، Notes و …).
+- **`src/context/OSContext.tsx` & `src/context/useOS.ts`**: منطق شبیه‌ساز سیستم‌عامل و مدیریت وضعیت پنجره‌ها.
+- **`src/components/system`**: کامپوننت‌های سیستمی مثل `Navbar`, `Dock`, `Window`, `ControlCenter`.
+- **`src/components/apps`**: پیاده‌سازی اپلیکیشن‌های مختلف داخل دسکتاپ.
+- **`public`**: آیکون‌ها، تصاویر پروژ‌ه‌ها، والپیپر روشن/تاریک و سایر فایل‌های استاتیک.
+
+---
+
+### ⚙️ تکنولوژی‌ها
+
+- **React 19** + **TypeScript**
+- **Vite 7** برای باندلینگ و توسعه سریع
+- **Tailwind CSS v4** برای استایل‌دهی مدرن
+- **motion** برای انیمیشن‌ها
+- **lucide-react** و **react-icons** برای آیکون‌ها
+
+---
+
+### 📜 مجوز
+
+این پروژه برای استفاده شخصی/نمونه‌کار فراهم شده است. در صورت استفاده مجدد، لطفاً نام سازنده را ذکر کنید.
+
+طراحی و توسعه توسط میلاد غریبی
