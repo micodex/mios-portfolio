@@ -2,7 +2,7 @@
   "name": "macos-portfolio",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://micodex.github.io/mios-portfolio/",
+  "homepage": "https://micodex.github.io/macos-portfolio/",
   "type": "module",
   "scripts": {
     "dev": "vite",
