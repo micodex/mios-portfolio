@@ -6,6 +6,7 @@ body {
   width: 100dvw;
   height: 100dvh;
   overflow: hidden;
+  background-color: #68a7ff;
   background-image: url("/wallpaper-light.jpg");
   background-size: cover;
   background-repeat: no-repeat;

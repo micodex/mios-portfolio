@@ -1,9 +1,14 @@
 import { type Project } from "@/data/finder";
 import folderImage from "@/assets/images/folder.png";
+import ImageSkeleton from "@/components/ui/ImageSkeleton";
 
 const ProjectCard = ({ project }: { project: Project }) => {
   return (
-    <div className="group flex flex-col justify-center gap-2 p-2 rounded-xl hover:bg-blue-50 cursor-pointer transition-colors duration-100 hover:outline-2 outline-blue-100">
+    <div
+      className="group flex flex-col justify-center gap-2 p-2 
+      rounded-xl hover:bg-blue-50 cursor-pointer transition-colors
+      duration-100 hover:outline-2 outline-blue-100 ease-in"
+    >
       {/* thumbnail */}
       {project.image ? (
         <a
@@ -12,23 +17,19 @@ const ProjectCard = ({ project }: { project: Project }) => {
           rel="noopener noreferrer"
           className="flex flex-1"
         >
-          <img
+          <ImageSkeleton
             src={`${import.meta.env.BASE_URL}${project.image}`}
             alt={`${project.title} thumbnail`}
-            draggable={false}
-            loading="lazy"
-            className="block shadow-md w-80 self-center"
+            className="w-80 self-center"
           />
         </a>
       ) : (
         // if no image, use default folder image
         <div className="flex flex-1">
-          <img
+          <ImageSkeleton
             src={folderImage}
             alt="thumbnail"
-            draggable={false}
-            loading="lazy"
-            className="block w-40 self-center"
+            className="w-40 self-center"
           />
         </div>
       )}

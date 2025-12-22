@@ -152,6 +152,7 @@ function DockIcon({ children, className = "" }: DockIconProps) {
 }
 
 import { useOS } from "@/context/useOS";
+import ImageSkeleton from "../ui/ImageSkeleton";
 
 export default function Dock({
   className = "",
@@ -205,11 +206,9 @@ export default function Dock({
             baseItemSize={baseItemSize}
           >
             <DockIcon>
-              <img
-                loading="lazy"
+              <ImageSkeleton
                 src={`${import.meta.env.BASE_URL}dock-icons/${item.icon}`}
                 alt={`${item.title} icon`}
-                draggable={false}
                 className="select-none"
               />
             </DockIcon>

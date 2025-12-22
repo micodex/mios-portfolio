@@ -88,7 +88,7 @@ export const PROJECTS: Project[] = [
     desc: "The operating system you are currently looking at.",
     tags: ["TypeScript", "Vite", "React"],
     image: "projects/project-4.jpg",
-    github: "https://micodex.github.io/macOS-portfolio/",
+    github: "https://github.com/micodex/macOS-portfolio",
     demo: "",
   },
   {
@@ -163,8 +163,8 @@ export const MY_SKILLS = [
     skills: [
       { label: "Git", icon: "text.png", level: "50%" },
       { label: "Github", icon: "text.png", level: "60%" },
-      { label: "Docker", icon: "plain.png", level: "10%" },
-      { label: "CI/CD", icon: "sh.png", level: "10%" },
+      { label: "Docker", icon: "text.png", level: "1%" },
+      { label: "CI/CD", icon: "sh.png", level: "1%" },
     ],
   },
 ];

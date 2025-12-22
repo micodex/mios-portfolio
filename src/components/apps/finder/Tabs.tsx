@@ -1,4 +1,6 @@
 import ProjectCard from "./ProjectCard";
+import ImageSkeleton from "@/components/ui/ImageSkeleton";
+
 import { MY_SKILLS, PROJECTS } from "@/data/finder";
 import { ArrowUpRight, Download } from "lucide-react";
 
@@ -7,13 +9,8 @@ import profilePic from "@/assets/images/profile.jpg";
 export const AboutTab = () => {
   return (
     <div className="flex flex-col items-center justify-center h-full text-center p-8 text-gray-500 space-y-4">
-      <div className="w-24 h-24 overflow-hidden rounded-full flex items-center justify-center mb-4">
-        <img
-          draggable={false}
-          loading="lazy"
-          src={profilePic}
-          alt="profile image"
-        />
+      <div className="w-28 h-28 overflow-hidden rounded-full flex items-center justify-center mb-4">
+        <ImageSkeleton src={profilePic} alt="profile image" />
       </div>
       <h2 className="text-2xl font-bold text-gray-800">Milad Gharibi</h2>
       <p className="max-w-md">
@@ -69,14 +66,15 @@ export const SkillsTab = () => (
           {skills.map(({ label, icon, level }) => (
             <div
               key={label}
-              className="group flex flex-col gap-2 items-center p-2 rounded-xl hover:bg-gray-100 transition-colors"
+              className="group flex flex-col gap-2 items-center p-2 rounded-xl
+                hover:bg-gray-100 hover:outline outline-gray-200
+                transition-colors ease-in"
             >
               <div className="w-16">
-                <img
-                  draggable={false}
+                <ImageSkeleton
                   src={`${import.meta.env.BASE_URL}files/${icon}`}
                   alt={`${label} icon`}
-                  loading="lazy"
+                  className="w-16"
                 />
               </div>
               <div className="text-sm font-medium text-gray-700 text-center">
