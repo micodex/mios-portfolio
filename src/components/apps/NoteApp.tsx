@@ -6,7 +6,7 @@ import ProfileImg from "@/assets/images/profile.jpg";
 import NoteImg from "@/assets/graphic/notes-icon.png";
 
 // style
-import motion from "motion/react-client";
+import * as motion from "motion/react-client";
 import { customScrollbar } from "@/lib/scrollbar";
 
 // ui
