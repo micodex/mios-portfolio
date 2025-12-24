@@ -9,7 +9,6 @@ import {
   Shield,
   type LucideIcon,
 } from "lucide-react";
-import { ElementType } from "react";
 
 export type ControlType = "circular" | "wide" | "slider" | "music";
 

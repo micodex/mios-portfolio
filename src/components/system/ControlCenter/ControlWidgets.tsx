@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { type ControlItem } from "./controls.config";
-import { Pause, Play, SkipBack, SkipForward } from "lucide-react";
-import coverImg from "@/assets/graphic/album-cover.jpg";
 
 // circualr control (1x1)
 export const CircularControl = ({ data }: { data: ControlItem }) => {
@@ -98,45 +96,6 @@ export const SliderControl = ({ data }: { data: ControlItem }) => {
         <div className="flex-none px-2 text-gray-100">
           {Icon ? <Icon size={16} /> : null}
         </div>
-      </div>
-    </div>
-  );
-};
-
-// music control (2x2)
-export const MusicControl = () => {
-  const [playing, setPlaying] = useState(false);
-
-  return (
-    <div className="liquid-glass h-full w-full bg-black/20 rounded-4xl p-3 flex flex-col justify-between text-white">
-      {/* image cover */}
-      <div className="w-12 h-12 rounded-2xl shadow-lg shrink-0 overflow-hidden">
-        <img draggable={false} src={coverImg} className="" />
-      </div>
-
-      <div className="">
-        <div className="font-bold text-[14px] truncate">Under the Water</div>
-        <div className="text-[8px] text-white/60 truncate">
-          AURORA . FOR THE METAL PEOPLE
-        </div>
-      </div>
-      {/* music control buttons */}
-      <div className="flex items-center justify-between px-4  mt-1">
-        <SkipBack
-          size={16}
-          className="fill-white hover:opacity-70 cursor-pointer"
-        />
-        <button onClick={() => setPlaying(!playing)}>
-          {playing ? (
-            <Pause size={22} className="fill-white" />
-          ) : (
-            <Play size={22} className="fill-white" />
-          )}
-        </button>
-        <SkipForward
-          size={16}
-          className="fill-white hover:opacity-70 cursor-pointer"
-        />
       </div>
     </div>
   );
