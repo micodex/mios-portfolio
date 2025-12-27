@@ -1,8 +1,8 @@
 import ProjectCard from "./ProjectCard";
 import ImageSkeleton from "@/components/ui/ImageSkeleton";
 
-import { MY_SKILLS, PROJECTS } from "@/data/finder";
-import { ArrowUpRight, Download } from "lucide-react";
+import { DOWNLOADS, MY_SKILLS, PROJECTS } from "@/data/finder";
+import { ArrowUpRight } from "lucide-react";
 
 import profilePic from "@/assets/images/profile.jpg";
 
@@ -28,13 +28,17 @@ export const AboutTab = () => {
 
 // ---
 
-export const ProjectsTab = () => (
+export const ProjectsTab = ({ mode }: { mode: "grid" | "list" }) => (
   <div className="space-y-6">
     <div>
       <h2 className="text-gray-500 text-xs font-bold mb-4 px-1">
         2025 Projects
       </h2>
-      <div className="grid grid-cols-4 gap-4">
+      <div
+        className={`${
+          mode === "grid" ? "grid grid-cols-4 gap-4 text-center" : "block"
+        }`}
+      >
         {PROJECTS.map((p) => (
           <ProjectCard key={p.id} project={p} />
         ))}
@@ -91,24 +95,58 @@ export const SkillsTab = () => (
 
 // ---
 
-export const ResumeTab = () => (
-  <div className="flex flex-col gap-2">
-    {[
-      "Resume_2025.pdf",
-      "Cover_Letter.docx",
-      "Portfolio_Assets.zip",
-      "Assets.zip",
-    ].map((file, i) => (
+export const DownloadTab = ({ mode }: { mode: "grid" | "list" }) => (
+  <div
+    className={`${
+      mode === "grid" ? "grid grid-cols-4 gap-4 text-center" : "flex flex-col"
+    }`}
+  >
+    {/* list view header */}
+    {mode === "list" && (
+      <div className="flex p-3 pt-0 mb-2">
+        <h3 className="flex-3 text-left">Name</h3>
+        <h3 className="flex-2">Date</h3>
+        <h3 className="flex-1">Size</h3>
+        <h3 className="flex-1">Kind</h3>
+      </div>
+    )}
+
+    {DOWNLOADS.map(({ name, icon: Icon, date, size, kind, link }) => (
       <div
-        key={i}
-        className="flex items-center gap-3 p-3 hover:bg-blue-50 rounded-lg cursor-pointer group even:bg-gray-100"
+        key={name}
+        className={`${
+          mode === "grid" ? "" : "flex items-center justify-between gap-3"
+        }  p-3 hover:bg-blue-50 rounded-lg cursor-pointer group even:bg-gray-100`}
       >
-        <Download
-          size={20}
-          className="text-gray-400 group-hover:text-blue-500"
-        />
-        <span className="text-sm font-medium text-gray-700">{file}</span>
-        <span className="text-xs text-gray-400 ml-auto">2.4 MB</span>
+        {/* icons */}
+        <div
+          className={`${
+            mode === "grid"
+              ? "flex flex-col items-center gap-4"
+              : "flex-3 flex gap-2"
+          }`}
+        >
+          <Icon
+            size={mode == "grid" ? 40 : 20}
+            className=" text-gray-400 group-hover:text-blue-500"
+          />
+          <a href={link} download>
+            <span className="text-sm font-bold text-gray-700 hover:text-blue-500 transition-colors">
+              {name}
+            </span>
+          </a>
+        </div>
+
+        {/* show only on grid mode */}
+        {mode === "list" && (
+          <span className="flex-2  text-sm text-gray-500">{date}</span>
+        )}
+        <span className="flex-1  text-sm text-gray-500">{size}</span>
+
+        {/* show only on grid mode */}
+        {mode === "list" && (
+          <span className="flex-1   text-sm text-gray-500">{kind}</span>
+        )}
       </div>
     ))}
   </div>

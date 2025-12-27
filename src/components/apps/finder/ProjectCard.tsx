@@ -20,7 +20,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
           <ImageSkeleton
             src={`${import.meta.env.BASE_URL}${project.image}`}
             alt={`${project.title} thumbnail`}
-            className="w-80 self-center aspect-4/3"
+            className="w-80 self-center aspect-4/3 shadow-lg"
           />
         </a>
       ) : (
@@ -36,14 +36,14 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
       {/* text info */}
       <div className="mt-auto flex flex-col ml-2">
-        <span className="text-sm font-semibold text-gray-700 truncate group-hover:text-blue-600">
+        <span className="text-md font-semibold text-gray-700 truncate group-hover:text-blue-600">
           {project.title}
           <span className="opacity-0 group-hover:opacity-100 transition-opacity">
             {" "}
             ↗
           </span>
         </span>
-        <span className="text-xs text-gray-500 line-clamp-2">
+        <span className="text-sm text-gray-500 line-clamp-2">
           {project.desc}
         </span>
       </div>

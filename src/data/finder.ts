@@ -10,7 +10,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-export interface SideBarItems {
+export interface SideBarItem {
   category: string;
   items: {
     id: string;
@@ -20,7 +20,7 @@ export interface SideBarItems {
   }[];
 }
 
-export const SIDEBAR_ITEMS: SideBarItems[] = [
+export const FINDER_SIDEBAR: SideBarItem[] = [
   {
     category: "Favorites",
     items: [
@@ -33,7 +33,7 @@ export const SIDEBAR_ITEMS: SideBarItems[] = [
       },
       { id: "skills", label: "Skills", icon: Code, color: "text-emerald-500" },
       {
-        id: "resume",
+        id: "downloads",
         label: "Downloads",
         icon: Download,
         color: "text-blue-400",
@@ -166,5 +166,81 @@ export const MY_SKILLS = [
       { label: "Docker", icon: "text.png", level: "1%" },
       { label: "CI/CD", icon: "sh.png", level: "1%" },
     ],
+  },
+];
+
+// --- Download tab ---
+
+export interface File {
+  id: string;
+  name: string;
+  size: string;
+  date: string;
+  kind: string;
+  icon: LucideIcon;
+  link?: string;
+}
+
+export const DOWNLOADS = [
+  {
+    id: "resume",
+    name: "Resume-2025.pdf",
+    size: "4MB",
+    date: "Dec 25 2025 at 12:18PM",
+    kind: "PDF",
+    icon: Download,
+  },
+  {
+    id: "figma",
+    name: "macOS Tahoe figma file.fig",
+    size: "4MB",
+    date: "Dec 25 2025 at 12:18PM",
+    kind: "FIG",
+    icon: Download,
+  },
+  {
+    id: "music1",
+    name: "Twenty-One-Pilots-Stressed-Out.mp3",
+    size: "4MB",
+    date: "Dec 25 2025 at 12:18PM",
+    kind: "MP3",
+    icon: Download,
+    link: "/audio/Twenty-One-Pilots-Stressed-Out.mp3",
+  },
+  {
+    id: "music2",
+    name: "Metro-Boomin-Annihilate.mp3",
+    size: "4MB",
+    date: "Dec 25 2025 at 12:18PM",
+    kind: "MP3",
+    icon: Download,
+    link: "/audio/Metro-Boomin-Annihilate.mp3",
+  },
+  {
+    id: "iconset",
+    name: "project-icon-set.zip",
+    size: "4MB",
+    date: "Dec 25 2025 at 12:18PM",
+    kind: "ZIP",
+    icon: Download,
+  },
+  {
+    id: "wallpaperlight",
+    name: "macOS-26-default-wallpaer-light-4k.jpg",
+    size: "4MB",
+    date: "Dec 25 2025 at 12:18PM",
+    kind: "JPG",
+    icon: Download,
+    link: "/wallpaper-light.jpg",
+  },
+
+  {
+    id: "wallpaperdark",
+    name: "macOS-26-default-wallpaer-dark-4k.jpg",
+    size: "4MB",
+    date: "Dec 25 2025 at 12:18PM",
+    kind: "JPG",
+    icon: Download,
+    link: "/wallpaper-dark.jpg",
   },
 ];
