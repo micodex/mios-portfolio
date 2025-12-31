@@ -11,7 +11,7 @@ const FinderApp = () => {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
   return (
-    <div className="flex h-full w-full text-gray-900 bg-white/80 backdrop-blur-2xl">
+    <div className="flex h-full w-full text-gray-900 bg-white/92 backdrop-blur-xl">
       {/* --- side bar --- */}
       <SideBar
         list={FINDER_SIDEBAR}
