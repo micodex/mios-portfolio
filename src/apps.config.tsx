@@ -1,7 +1,7 @@
 import FinderApp from "./components/apps/Finder/FinderApp";
 import NoteApp from "./components/apps/NoteApp";
 import TerminalApp from "./components/apps/TerminalApp";
-import SafariApp from "./components/apps/SafariApp";
+import SafariApp from "./components/apps/Safari/SafariApp";
 import MailApp from "./components/apps/MailApp";
 import SettingsApp from "./components/apps/SettingsApp";
 
@@ -28,7 +28,7 @@ export const appsConfig: AppConfig[] = [
     title: "Safari",
     icon: "safari.webp",
     width: 1040,
-    height: 600,
+    height: 750,
     component: <SafariApp />,
   },
   {

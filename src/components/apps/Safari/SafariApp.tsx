@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "motion/react";
 
 // icons
 import {
@@ -47,7 +48,7 @@ const SafariApp = () => {
     setInputValue(newItem.url);
 
     // Fake loading delay
-    setTimeout(() => setIsLoading(false), 500);
+    setTimeout(() => setIsLoading(false), 700);
     console.log(history);
   };
 
@@ -77,7 +78,7 @@ const SafariApp = () => {
   };
 
   return (
-    <div className="flex flex-col h-full bg-[#F5F5F7]/80 backdrop-blur-xl">
+    <div className="flex flex-col h-full bg-[#F5F5F7]/92 backdrop-blur-xl">
       {/* Safari Toolbar */}
       <div className="h-12 bg-[#F5F5F7] border-b border-gray-300/50 flex items-center px-4 gap-4 shrink-0 z-10 relative">
         {/* -- navigation controls */}
@@ -85,7 +86,7 @@ const SafariApp = () => {
           <button
             onClick={handleBack}
             disabled={currentIndex === 0}
-            className="hover:text-black p-1 rounded transition-colors disabled:opacity-30 cursor-pointer"
+            className="hover:bg-gray-300 hover:text-white active:scale-95 p-1 rounded-full transition-colors disabled:opacity-30 cursor-pointer "
           >
             <ChevronLeft size={20} strokeWidth={2} />
           </button>
@@ -93,7 +94,7 @@ const SafariApp = () => {
           <button
             onClick={handleForward}
             disabled={currentIndex === history.length - 1}
-            className="hover:bg-gray-200/50 p-1 rounded transition-colors disabled:opacity-30 cursor-pointer"
+            className="hover:bg-gray-300 hover:text-white active:scale-95 p-1 rounded-full transition-colors disabled:opacity-30 cursor-pointer "
           >
             <ChevronRight size={20} strokeWidth={2} />
           </button>
@@ -151,11 +152,15 @@ const SafariApp = () => {
       </div>
 
       {/* browser content */}
-      <div className="flex-1 overflow-y-auto relative bg-white/50 scroll-smooth">
+      <div className="flex-1 overflow-y-auto relative scroll-smooth">
         {/* fake progress bar */}
         {isLoading && (
           <div className="absolute top-0 left-0 w-full h-0.5 bg-gray-200 z-50">
-            <div className="h-full bg-blue-500 w-1/3 animate-[progress_1s_ease-in-out_infinite]" />
+            <motion.div
+              initial={{ width: "0%" }}
+              animate={{ width: ["10%", "30%", "100%"] }}
+              className="h-full bg-blue-500"
+            />
           </div>
         )}
 
@@ -166,7 +171,7 @@ const SafariApp = () => {
 
         {/* 404 - External Link Mock */}
         {currentItem.type === "404" && (
-          <div className="flex flex-col items-center justify-center h-full text-gray-400 p-8 text-center animate-in fade-in zoom-in-95">
+          <div className="flex flex-col items-center justify-center h-full text-gray-400 p-8 text-center">
             <Globe size={64} className="mb-4 opacity-50" />
             <h2 className="text-xl font-bold text-gray-600 mb-2">
               Cannot connect to server
