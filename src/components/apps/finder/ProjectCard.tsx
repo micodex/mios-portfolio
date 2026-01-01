@@ -5,9 +5,9 @@ import { type Project } from "@/data/finder";
 const ProjectCard = ({ project }: { project: Project }) => {
   return (
     <div
-      className="group flex flex-col justify-center gap-2 p-2 
+      className="group flex flex-col justify-center p-2 
       rounded-xl hover:bg-blue-50 cursor-pointer transition-colors
-      duration-100 hover:outline-2 outline-blue-100 ease-in"
+      duration-100 hover:outline-2 outline-blue-100 ease-in max-w-xl"
     >
       {/* thumbnail */}
       <a
@@ -20,7 +20,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
             <ImageSkeleton
               src={`${import.meta.env.BASE_URL}${project.image}`}
               alt={`${project.title} thumbnail`}
-              className="w-80 self-center aspect-4/3 shadow-md"
+              className="w-full self-center aspect-4/3 shadow-md"
             />
           ) : (
             // if no image, use default folder image

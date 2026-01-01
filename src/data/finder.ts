@@ -185,10 +185,11 @@ export const DOWNLOADS = [
   {
     id: "resume",
     name: "Resume-2025.pdf",
-    size: "4MB",
-    date: "Dec 25 2025 at 12:18PM",
+    size: "215 KB",
+    date: "Jan 1 2025 at 11:20AM",
     kind: "PDF",
     icon: Download,
+    link: "/milad-gharibi-resume.pdf",
   },
   {
     id: "figma",
@@ -201,7 +202,7 @@ export const DOWNLOADS = [
   {
     id: "music1",
     name: "Twenty-One-Pilots-Stressed-Out.mp3",
-    size: "4MB",
+    size: "2.39 MB",
     date: "Dec 25 2025 at 12:18PM",
     kind: "MP3",
     icon: Download,
@@ -210,7 +211,7 @@ export const DOWNLOADS = [
   {
     id: "music2",
     name: "Metro-Boomin-Annihilate.mp3",
-    size: "4MB",
+    size: "2.70 MB",
     date: "Dec 25 2025 at 12:18PM",
     kind: "MP3",
     icon: Download,
@@ -218,16 +219,17 @@ export const DOWNLOADS = [
   },
   {
     id: "iconset",
-    name: "project-icon-set.zip",
-    size: "4MB",
-    date: "Dec 25 2025 at 12:18PM",
+    name: "macOS-icon-set.zip",
+    size: "3.68 MB",
+    date: "Jan 1 2025 at 11:30AM",
     kind: "ZIP",
     icon: Download,
+    link: "/macOS-icon-set.zip",
   },
   {
     id: "wallpaperlight",
     name: "macOS-26-default-wallpaer-light-4k.jpg",
-    size: "4MB",
+    size: "898 KB",
     date: "Dec 25 2025 at 12:18PM",
     kind: "JPG",
     icon: Download,
@@ -237,7 +239,7 @@ export const DOWNLOADS = [
   {
     id: "wallpaperdark",
     name: "macOS-26-default-wallpaer-dark-4k.jpg",
-    size: "4MB",
+    size: "848 KB",
     date: "Dec 25 2025 at 12:18PM",
     kind: "JPG",
     icon: Download,

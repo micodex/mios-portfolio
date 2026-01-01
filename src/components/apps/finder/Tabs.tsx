@@ -2,11 +2,13 @@ import ProjectCard from "./ProjectCard";
 import ImageSkeleton from "@/components/ui/ImageSkeleton";
 
 import { DOWNLOADS, MY_SKILLS, PROJECTS } from "@/data/finder";
+import profilePic from "@/assets/images/profile.jpg";
 import { ArrowUpRight } from "lucide-react";
 
-import profilePic from "@/assets/images/profile.jpg";
-
+import { useOS } from "@/context/useOS";
 export const AboutTab = () => {
+  const { dispatch } = useOS();
+
   return (
     <div className="flex flex-col items-center justify-center h-full text-center p-8 text-gray-500 space-y-4">
       <ImageSkeleton
@@ -19,7 +21,10 @@ export const AboutTab = () => {
         I am a creative developer building interfaces that feel alive. Welcome
         to my digital garden.
       </p>
-      <button className="flex items-center gap-2 text-blue-500 hover:underline cursor-pointer mt-4">
+      <button
+        onClick={() => dispatch({ type: "OPEN", id: "notes" })}
+        className="flex items-center gap-2 text-blue-500 hover:underline cursor-pointer mt-4"
+      >
         Read full bio <ArrowUpRight size={14} />
       </button>
     </div>
@@ -36,7 +41,7 @@ export const ProjectsTab = ({ mode }: { mode: "grid" | "list" }) => (
       </h2>
       <div
         className={`${
-          mode === "grid" ? "grid grid-cols-4 gap-4" : "grid grid-cols-2 gap-4"
+          mode === "grid" ? "grid grid-cols-4 gap-4" : "grid grid-cols-2 gap-10"
         }`}
       >
         {PROJECTS.map((p) => (
@@ -112,42 +117,46 @@ export const DownloadTab = ({ mode }: { mode: "grid" | "list" }) => (
     )}
 
     {DOWNLOADS.map(({ name, icon: Icon, date, size, kind, link }) => (
-      <div
+      <a
         key={name}
-        className={`${
-          mode === "grid" ? "" : "flex items-center justify-between gap-3"
-        }  p-3 hover:bg-blue-50 rounded-lg cursor-pointer group even:bg-gray-100`}
+        href={link}
+        className="even:bg-gray-100 rounded-lg cursor-pointer p-3 hover:bg-blue-50 group"
+        download
       >
-        {/* icons */}
         <div
           className={`${
-            mode === "grid"
-              ? "flex flex-col items-center gap-4"
-              : "flex-3 flex gap-2"
-          }`}
+            mode === "grid" ? "" : "flex items-center justify-between gap-3"
+          } `}
         >
-          <Icon
-            size={mode == "grid" ? 40 : 20}
-            className=" text-gray-400 group-hover:text-blue-500"
-          />
-          <a href={link} download>
+          {/* icons */}
+          <div
+            className={`${
+              mode === "grid"
+                ? "flex flex-col items-center gap-4"
+                : "flex-3 flex gap-2"
+            }`}
+          >
+            <Icon
+              size={mode == "grid" ? 40 : 20}
+              className=" text-gray-400 group-hover:text-blue-500"
+            />
             <span className="text-sm font-bold text-gray-700 hover:text-blue-500 transition-colors">
               {name}
             </span>
-          </a>
+          </div>
+
+          {/* show only on grid mode */}
+          {mode === "list" && (
+            <span className="flex-2  text-sm text-gray-500">{date}</span>
+          )}
+          <span className="flex-1  text-sm text-gray-500">{size}</span>
+
+          {/* show only on grid mode */}
+          {mode === "list" && (
+            <span className="flex-1   text-sm text-gray-500">{kind}</span>
+          )}
         </div>
-
-        {/* show only on grid mode */}
-        {mode === "list" && (
-          <span className="flex-2  text-sm text-gray-500">{date}</span>
-        )}
-        <span className="flex-1  text-sm text-gray-500">{size}</span>
-
-        {/* show only on grid mode */}
-        {mode === "list" && (
-          <span className="flex-1   text-sm text-gray-500">{kind}</span>
-        )}
-      </div>
+      </a>
     ))}
   </div>
 );
