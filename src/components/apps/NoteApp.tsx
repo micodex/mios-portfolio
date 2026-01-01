@@ -15,7 +15,7 @@ import ImageSkeleton from "../ui/ImageSkeleton";
 const NoteApp = () => {
   return (
     <div
-      className={`relative h-full p-6 bg-white/70 backdrop-blur-2xl overflow-y-scroll ${customScrollbar}`}
+      className={`relative h-full p-6 bg-white/90 backdrop-blur-2xl overflow-y-scroll ${customScrollbar}`}
     >
       {/* note graphic */}
       <div className="absolute w-16 left-100 top-22 rotate-20">
@@ -43,6 +43,7 @@ const NoteApp = () => {
         <div className="flex gap-6">
           {NOTE_LINKS.map(({ icon: Icon, url }) => (
             <motion.a
+              key={url}
               href={url}
               target="_blank"
               rel="noopener noreferrer"

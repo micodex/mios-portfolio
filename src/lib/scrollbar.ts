@@ -4,7 +4,7 @@ export const customScrollbar = [
   "[&::-webkit-scrollbar]:h-1.5",
 
   // The draggable thumb
-  "[&::-webkit-scrollbar-thumb]:bg-gray-300",
+  "[&::-webkit-scrollbar-thumb]:bg-gray-400",
   "[&::-webkit-scrollbar-thumb]:rounded-md",
 
   // Smooth interactions feel professional

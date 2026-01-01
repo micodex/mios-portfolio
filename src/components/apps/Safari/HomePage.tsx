@@ -9,7 +9,7 @@ interface HomePageProps {
 }
 
 const HomePage = ({ onNavigate }: HomePageProps) => (
-  <div className="flex flex-col items-center py-16 px-8">
+  <div className="flex flex-col items-center py-16">
     <div className="mb-12 flex flex-col items-center">
       <h1 className="text-4xl font-bold text-gray-800 mb-2 drop-shadow-sm">
         Favorites
@@ -50,7 +50,7 @@ const HomePage = ({ onNavigate }: HomePageProps) => (
                 data: project,
               })
             }
-            className="flex items-center gap-4 p-3 rounded-2xl bg-white/80 border border-gray-200 shadow-sm hover:shadow-md transition-all cursor-pointer group"
+            className="flex items-center gap-4 p-3 rounded-xl bg-white/90 border border-gray-200 shadow-sm hover:shadow-md transition-all cursor-pointer group"
           >
             <div
               className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0`}

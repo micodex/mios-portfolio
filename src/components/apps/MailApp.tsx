@@ -4,7 +4,7 @@ import { Bold, ChevronDown, Italic, Paperclip, Underline } from "lucide-react";
 
 const MailApp = () => {
   return (
-    <div className="flex h-full bg-white/70 backdrop-blur-2xl">
+    <div className="flex h-full bg-white/93 backdrop-blur-2xl">
       {/* sidebar */}
       <aside className="w-49 pt-3 select-none">
         <h3 className="px-5 mb-1 text-[10px] font-bold text-gray-400 uppercase tracking-wide">
@@ -39,7 +39,7 @@ const MailApp = () => {
       </aside>
 
       {/* main content */}
-      <div className="flex-1 flex flex-col bg-white/50">
+      <div className="flex-1 flex flex-col bg-white">
         {/* header */}
         <div className="px-6 pt-4 pb-2">
           <div className="flex items-center py-1.5 border-b border-gray-200">

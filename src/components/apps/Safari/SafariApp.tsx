@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "motion/react";
-
+import { customScrollbar } from "@/lib/scrollbar";
 // icons
 import {
   ChevronLeft,
@@ -78,9 +78,9 @@ const SafariApp = () => {
   };
 
   return (
-    <div className="flex flex-col h-full bg-[#F5F5F7]/92 backdrop-blur-xl">
+    <div className="flex flex-col h-full bg-[#F5F5F7]/93 backdrop-blur-2xl">
       {/* Safari Toolbar */}
-      <div className="h-12 bg-[#F5F5F7] border-b border-gray-300/50 flex items-center px-4 gap-4 shrink-0 z-10 relative">
+      <div className="h-12 bg-[#F5F5F7] border-b border-gray-300/50 flex items-center px-4 gap-4 shrink-0  relative">
         {/* -- navigation controls */}
         <div className="flex gap-4 p-1 text-gray-600 bg-gray-200 rounded-full">
           <button
@@ -151,8 +151,10 @@ const SafariApp = () => {
         </div>
       </div>
 
-      {/* browser content */}
-      <div className="flex-1 overflow-y-auto relative scroll-smooth">
+      {/* Browser Content*/}
+      <div
+        className={`flex-1 overflow-y-auto relative scroll-smooth ${customScrollbar}`}
+      >
         {/* fake progress bar */}
         {isLoading && (
           <div className="absolute top-0 left-0 w-full h-0.5 bg-gray-200 z-50">
