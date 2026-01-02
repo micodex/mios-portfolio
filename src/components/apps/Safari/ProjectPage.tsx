@@ -5,11 +5,31 @@ const ProjectPage = ({ project }: { project: Project }) => (
   <div className="h-full bg-white overflow-auto py-10">
     {/* Hero Header */}
     <div className="relative flex flex-col items-center justify-center text-center">
-      <div className="mb-8">
+      <div className="mb-4">
         <h1 className="text-4xl font-bold mb-2 drop-shadow-xl">
           {project.title}
         </h1>
         <p className="opacity-80 max-w-md mx-auto">{project.desc}</p>
+      </div>
+
+      {/* project links */}
+      <div className="flex gap-4 mb-8">
+        <a
+          href={project.demo}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-4 py-2 rounded-full bg-gray-200  hover:bg-sky-500 hover:text-white cursor-pointer transition-colors shadow-lg r border border-gray-300 active:scale-90"
+        >
+          Demo
+        </a>
+        <a
+          href={project.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-4 py-2 rounded-full bg-gray-900 text-white hover:bg-sky-500 cursor-pointer transition-colors shadow-lg r border border-gray-300 active:scale-90"
+        >
+          GitHub
+        </a>
       </div>
       {/* Project Screenshot */}
       <div className="relative w-200">

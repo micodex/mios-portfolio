@@ -75,7 +75,7 @@ export interface Project {
 export const PROJECTS: Project[] = [
   {
     id: 1,
-    title: "Micodx Portfolio",
+    title: "Micodex Portfolio",
     desc: "A modern portfolio website built with Next.js 15 and React 19, The UI is styled with Tailwind CSS 4 and enhanced with AOS and Framer Motion animations for smooth transitions.",
     tags: ["Next.js", "TypeScript", "Motion"],
     image: "projects/project-1.jpg",
