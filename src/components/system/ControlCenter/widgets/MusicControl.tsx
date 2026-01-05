@@ -1,16 +1,20 @@
+import { useOS } from "@/context/useOS";
 import { useEffect, useState } from "react";
 import { Pause, Play, SkipBack, SkipForward } from "lucide-react";
+
 import {
   audio,
-  audioState,
-  PLAYLIST,
-  loadTrack,
   playNext,
+  PLAYLIST,
   playPrev,
+  loadTrack,
+  audioState,
 } from "@/lib/music";
 
 const MusicControl = () => {
-  const [playing, setPlaying] = useState(!audio.paused);
+  const { state, dispatch } = useOS();
+  const playing = state.systemStatus.playing;
+
   const [trackIndex, setTrackIndex] = useState(audioState.currentIndex);
 
   useEffect(() => {
@@ -31,23 +35,23 @@ const MusicControl = () => {
   const togglePlay = () => {
     if (audio.paused) {
       audio.play();
-      setPlaying(true);
+      dispatch({ type: "SET_PLAYING", playing: true });
     } else {
       audio.pause();
-      setPlaying(false);
+      dispatch({ type: "SET_PLAYING", playing: false });
     }
   };
 
   const handleNext = () => {
     playNext();
     setTrackIndex(audioState.currentIndex);
-    setPlaying(true);
+    dispatch({ type: "SET_PLAYING", playing: true });
   };
 
   const handlePrev = () => {
     playPrev();
     setTrackIndex(audioState.currentIndex);
-    setPlaying(true);
+    dispatch({ type: "SET_PLAYING", playing: true });
   };
 
   return (

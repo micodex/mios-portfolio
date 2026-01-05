@@ -1,9 +1,9 @@
 import FinderApp from "./components/apps/Finder/FinderApp";
-import NoteApp from "./components/apps/NoteApp";
-import TerminalApp from "./components/apps/TerminalApp";
 import SafariApp from "./components/apps/Safari/SafariApp";
-import MailApp from "./components/apps/MailApp";
 import SettingsApp from "./components/apps/SettingsApp";
+import TerminalApp from "./components/apps/TerminalApp";
+import NoteApp from "./components/apps/NoteApp";
+import MailApp from "./components/apps/MailApp";
 
 export interface AppConfig {
   id: string;

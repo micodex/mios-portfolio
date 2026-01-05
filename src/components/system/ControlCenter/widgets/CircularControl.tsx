@@ -1,14 +1,30 @@
-import { useState } from "react";
 import { type ControlItem } from "../controls.config";
+import { useOS } from "@/context/useOS";
 
 // circualr control (1x1)
 export const CircularControl = ({ data }: { data: ControlItem }) => {
-  const [active, setActive] = useState(data.isActive);
+  const { state, dispatch } = useOS();
   const Icon = data.icon;
 
+  const active =
+    data.id === "wifi"
+      ? state.systemStatus.wifi
+      : data.id === "bluetooth"
+      ? state.systemStatus.bluetooth
+      : data.id === "lock"
+      ? state.systemStatus.lock
+      : false;
+
   const handleClick = () => {
-    setActive(!active);
-    if (data.action) data.action();
+    if (data.id === "wifi") {
+      dispatch({ type: "TOGGLE_WIFI" });
+    } else if (data.id === "bluetooth") {
+      dispatch({ type: "TOGGLE_BLUETOOTH" });
+    } else if (data.id === "lock") {
+      dispatch({ type: "TOGGLE_LOCKSCREEN" });
+    } else if (data.id === "fullscreen") {
+      data.action && data.action();
+    }
   };
 
   return (

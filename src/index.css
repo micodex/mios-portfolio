@@ -48,7 +48,8 @@ body {
       }
     }
 
-    ul {
+    /* -- navigation list : project - contact - skills ... -- */
+    ul.nav-lists {
       @apply flex items-center gap-0 max-sm:hidden;
 
       p {
@@ -58,6 +59,23 @@ body {
 
     time {
       @apply text-sm font-medium text-black;
+    }
+
+    /* -- taks icons : menu, bluetooth, wifi ... -- */
+    ul.task-icons {
+      @apply flex gap-1;
+
+      li {
+        @apply px-2 py-1 rounded-full cursor-pointer transition-all;
+      }
+
+      li:hover {
+        @apply bg-white/50;
+      }
+
+      .opened {
+        @apply text-gray-600 bg-white/50;
+      }
     }
   }
 }

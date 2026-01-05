@@ -5,8 +5,12 @@ import WideControl from "./widgets/WideControl";
 import MusicControl from "./widgets/MusicControl";
 import SliderControl from "./widgets/SliderControl";
 import CircularControl from "./widgets/CircularControl";
+import { useOS } from "@/context/useOS";
 
-const ControlCenter = ({ isOpen }: { isOpen: boolean }) => {
+const ControlCenter = () => {
+  const { state } = useOS();
+  const isOpen = state.systemStatus.ccOpen;
+
   return (
     <div
       className={`fixed top-14 right-4 w-74 not-first-of-type: z-100 select-none transition-all

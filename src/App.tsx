@@ -5,21 +5,18 @@ import Window from "@/components/system/Window";
 import Navbar from "@/components/system/Navbar";
 import ControlCenter from "./components/system/ControlCenter/ControlCenter";
 
-import { useState } from "react";
 import { useOS } from "@/context/useOS";
 
 function Desktop() {
   const { state } = useOS();
-  // state to toggle control center
-  const [ccOpen, setCcOpen] = useState(false);
 
   return (
     <div className="font-georama">
       {/* control center */}
-      <ControlCenter isOpen={ccOpen} />
+      <ControlCenter />
 
       {/* navigation */}
-      <Navbar onToggleCC={() => setCcOpen(!ccOpen)} />
+      <Navbar />
 
       {/* windows layer */}
       {state.apps.map((app) => (

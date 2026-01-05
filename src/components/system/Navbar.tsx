@@ -1,11 +1,22 @@
 import { useOS } from "@/context/useOS";
 
-import { navIcons, navLinks } from "@/data/navbar";
+import { navLinks } from "@/data/navbar";
+import {
+  Bluetooth,
+  BluetoothOff,
+  Search,
+  SquareMenu,
+  Volume2,
+  Wifi,
+  WifiOff,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 
-const Navbar = ({ onToggleCC }: { onToggleCC: () => void }) => {
-  const { state } = useOS();
+const Navbar = () => {
+  const { state, dispatch } = useOS();
+
   const activeApp = state.apps.find((app) => app.id === state.activeAppId);
+  const ccOpen = state.systemStatus.ccOpen; // is control center open
   const title = activeApp ? activeApp.title : "Desktop";
 
   const [time, setTime] = useState(new Date());
@@ -30,15 +41,7 @@ const Navbar = ({ onToggleCC }: { onToggleCC: () => void }) => {
     });
   };
 
-  const handleClick = (id: string) => {
-    switch (id) {
-      case "control": // control center image
-        onToggleCC();
-        break;
-      default:
-        console.log(`Button ${id} clicked`);
-    }
-  };
+  const iconSize: number = 20;
 
   return (
     <nav>
@@ -47,7 +50,7 @@ const Navbar = ({ onToggleCC }: { onToggleCC: () => void }) => {
         {/* active app */}
         <span className="hover-effect font-bold">{title}</span>
 
-        <ul>
+        <ul className="nav-lists">
           {navLinks.map(({ name }) => (
             <li key={name}>
               <span className="hover-effect">{name}</span>
@@ -56,19 +59,45 @@ const Navbar = ({ onToggleCC }: { onToggleCC: () => void }) => {
         </ul>
       </div>
 
+      {/* task icons and time & date */}
       <div>
-        <ul>
-          {navIcons.map(({ id, img }) => (
-            <li key={id}>
-              <button onClick={() => handleClick(id)}>
-                <img
-                  src={`${import.meta.env.BASE_URL}${img}`}
-                  alt={`icon-${id}`}
-                  className="hover-effect icon-hover"
-                />
-              </button>
+        <ul className="task-icons">
+          <li>
+            <Search size={iconSize} />
+          </li>
+          {state.systemStatus.wifi ? (
+            <li>
+              <Wifi size={iconSize} />
             </li>
-          ))}
+          ) : (
+            <li>
+              <WifiOff size={iconSize} />
+            </li>
+          )}
+
+          {state.systemStatus.bluetooth ? (
+            <li>
+              <Bluetooth size={iconSize} />
+            </li>
+          ) : (
+            <li>
+              <BluetoothOff size={iconSize} />
+            </li>
+          )}
+
+          {state.systemStatus.playing ? (
+            <li>
+              <Volume2 size={iconSize} />
+            </li>
+          ) : null}
+          {
+            <li
+              onClick={() => dispatch({ type: "TOGGLE_CC" })}
+              className={ccOpen ? "opened" : ""}
+            >
+              <SquareMenu size={iconSize} />
+            </li>
+          }
         </ul>
         <time>
           {formatDate(time)} &nbsp; {formatTime(time)}

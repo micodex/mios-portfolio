@@ -17,40 +17,66 @@ export interface AppData {
   height?: number;
 }
 
+export interface SystemStatus {
+  wifi: boolean;
+  bluetooth: boolean;
+  dark: boolean;
+  lock: boolean;
+  playing: boolean;
+  ccOpen: boolean;
+}
+
 interface OSState {
   apps: AppData[];
   maxZ: number;
   activeAppId: string | null;
+  systemStatus: SystemStatus;
 }
 
 type Action =
-  | { type: "OPEN"; id: string }
-  | { type: "CLOSE"; id: string }
-  | { type: "MINIMIZE"; id: string }
+  // window actions
+  | { type: "UPDATE_POS"; id: string; x: number; y: number }
   | { type: "MAXIMIZE"; id: string }
+  | { type: "MINIMIZE"; id: string }
+  | { type: "CLOSE"; id: string }
   | { type: "FOCUS"; id: string }
-  | { type: "UPDATE_POS"; id: string; x: number; y: number };
+  | { type: "OPEN"; id: string }
+  // status actions
+  | { type: "SET_PLAYING"; playing: boolean }
+  | { type: "TOGGLE_LOCKSCREEN" }
+  | { type: "TOGGLE_BLUETOOTH" }
+  | { type: "TOGGLE_DARKMODE" }
+  | { type: "TOGGLE_WIFI" }
+  | { type: "TOGGLE_CC" };
 
 // create initial apps from apps.config file
 const initialApps: AppData[] = appsConfig.map((app, index) => ({
   id: app.id,
   title: app.title,
   icon: app.icon,
-  isOpen: false, // or < index === 0 >to open the first app by default
+  isOpen: false, // or 'index === 0' to open the first app by default
   isMaximized: false,
   isMinimized: false,
   x: 100 + index * 50, // add 50px to the next app
-  y: 50 + index * 50,
+  y: 50 + index * 50, // add 50px to the next app
   z: index + 1,
   width: app.width,
   height: app.height,
 }));
 
-// --- main app state ---
+// --- Main App State ---
 const initialState: OSState = {
   apps: initialApps,
   maxZ: 10,
-  activeAppId: "safari",
+  activeAppId: "Desktop",
+  systemStatus: {
+    wifi: true,
+    bluetooth: false,
+    dark: false, // dark mode
+    lock: false, // lockscreen
+    playing: false, // is audio playing?
+    ccOpen: false, // control center
+  },
 };
 
 // --- reducer to send actions ---
@@ -112,6 +138,53 @@ const osReducer = (state: OSState, action: Action): OSState => {
           app.id === action.id ? { ...app, x: action.x, y: action.y } : app
         ),
       };
+    // status actions
+    case "TOGGLE_WIFI":
+      return {
+        ...state,
+        systemStatus: { ...state.systemStatus, wifi: !state.systemStatus.wifi },
+      };
+    case "TOGGLE_BLUETOOTH":
+      return {
+        ...state,
+        systemStatus: {
+          ...state.systemStatus,
+          bluetooth: !state.systemStatus.bluetooth,
+        },
+      };
+    case "TOGGLE_DARKMODE":
+      return {
+        ...state,
+        systemStatus: {
+          ...state.systemStatus,
+          dark: !state.systemStatus.dark,
+        },
+      };
+    case "SET_PLAYING":
+      return {
+        ...state,
+        systemStatus: {
+          ...state.systemStatus,
+          playing: action.playing,
+        },
+      };
+    case "TOGGLE_LOCKSCREEN":
+      return {
+        ...state,
+        systemStatus: {
+          ...state.systemStatus,
+          lock: !state.systemStatus.lock,
+        },
+      };
+    case "TOGGLE_CC":
+      return {
+        ...state,
+        systemStatus: {
+          ...state.systemStatus,
+          ccOpen: !state.systemStatus.ccOpen,
+        },
+      };
+
     default:
       return state;
   }
